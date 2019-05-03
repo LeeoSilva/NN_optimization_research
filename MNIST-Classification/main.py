@@ -16,7 +16,7 @@ import sys
 
 def predictionLoop(data):
     while True:
-        rand = random.randint(0, 20000) 
+        rand = random.randint(0, data.shape[0]) 
         predictions = new_model.predict(data)
         print(np.argmax(predictions[rand]))
         draw(rand, data)
@@ -31,7 +31,7 @@ def draw(num, image):
 
 if __name__ == "__main__":
     if len(sys.argv) == 2 and sys.argv[1] == "--debug": epoch = 1 # Shotens the number of epochs for execution time
-    else: epoch = 10
+    else: epoch = 400 
     image_x, image_y = 28, 28
 
     mnist = tf.keras.datasets.mnist # hand-written digits 0-9  
