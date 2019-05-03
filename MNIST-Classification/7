@@ -30,8 +30,11 @@ def draw(num, image):
     plt.show() 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 2 and sys.argv[1] == "--debug": epoch = 1 # Shotens the number of epochs for execution time
-    else: epoch = 10
+    print(len(sys.argv))
+    # if len(sys.argv)
+
+
+    epoch = 10 
     image_x, image_y = 28, 28
 
     mnist = tf.keras.datasets.mnist # hand-written digits 0-9  
