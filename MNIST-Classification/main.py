@@ -11,7 +11,14 @@ import random
 import time
 import sys
 
-# def plotHistory(history):
+
+def variable_summaries(var):
+    with tf.name.scope('summaries'):
+        mean = tf.reduce_mean(var)
+        print(mean) 
+        tf.summary.scalar('mean', mean)
+        with tf.name.scope('stddeve'):
+            stddev = tf.sqrt(tf.reduce_mean(tf.square(var - mean)))
 
 
 def predictionLoop(data):
@@ -31,7 +38,7 @@ def draw(num, image):
 
 if __name__ == "__main__":
     if len(sys.argv) == 2 and sys.argv[1] == "--debug": epoch = 1 # Shotens the number of epochs for execution time
-    else: epoch = 400 
+    else: epoch = 200 
     image_x, image_y = 28, 28
 
     mnist = tf.keras.datasets.mnist # hand-written digits 0-9  
@@ -50,12 +57,13 @@ if __name__ == "__main__":
     model.add(Dense(128, activation=softmax)) # Exponential function will increase the probability 
                                               # of maximum value of the previous layer compare to other value
 
-    model.compile(optimizer='adam',
+    model.compile(optimizer='SGD',
             loss='sparse_categorical_crossentropy',
             metrics=['accuracy']) 
     
     model.fit(x_train, y_train, epochs=epoch) 
     val_loss, val_acc = model.evaluate(x_test, y_test)
+    tf.summary.scalar(tf.sumary('learning rate'))
     #print(dir(val_loss))
     # print(dir(val_acc))
     #print("Loss: ".format(val_loss.tostring))

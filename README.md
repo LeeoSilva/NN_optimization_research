@@ -7,4 +7,7 @@ Adam is getting
 	  200 epochs, loss 0.2728, acc 0.9700
 	  300 epochs, loss 0.2578, acc 0.9800
 	  400 epochs, loss 0.2638, acc 0.9796
-	
+
+Stochastic Gradient Descent is getting
+	100 epochs, loss 0.0938, acc 0.9735
+	200 epochs, loss 0.1073, acc 0.9746
